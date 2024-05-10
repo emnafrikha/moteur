@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Lecteur {
+public abstract class Lecteur {
     
         public List<String> lire(String chemin) {
             List<String> words = new ArrayList<String>();

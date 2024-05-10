@@ -8,6 +8,7 @@ public class AnalyseurList{
         for (String mot : motFichier) {
             boolean motExiste = false;
             
+            
             // Recherche si le mot existe déjà dans StatFichier
             for (MotEtOcc motOcc : StatFichier) {
                 if (motOcc.getMot().equals(mot)) {
