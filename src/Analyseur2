@@ -1,0 +1,23 @@
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Analyseur2 extends Analyseur {
+
+    
+    public Map<String, Integer> analyser(List<String> motsFichier) {
+        Map<String, Integer> mots = new HashMap<>();
+        
+        for (String mot : motsFichier) {
+            if (mots.containsKey(mot)) {  // Si le mot est déjà dans la map
+                mots.put(mot, mots.get(mot) + 1);  // On incrémente le compteur
+            } else {
+                mots.put(mot, 1);  // Sinon, on ajoute le mot avec un compteur à 1
+            }
+               
+            
+        }
+        
+        return mots;
+    }
+}
