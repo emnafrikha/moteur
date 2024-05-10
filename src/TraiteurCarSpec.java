@@ -14,7 +14,7 @@ public class TraiteurCarSpec extends Traiteur{
             }
     
             private String enleverPunctuation(String mot) {
-                String ponctuation = "[\\p{Punct}&&[^']]+";
+                String ponctuation = "[\\p{Punct}]+";   // \\p{Punct} classe de ponctuation
                 return mot.replaceAll(ponctuation, "");
             }
         }

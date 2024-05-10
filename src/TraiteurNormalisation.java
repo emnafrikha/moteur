@@ -2,15 +2,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class TraiteurNormalisation extends Traiteur {
-    @Override
     public List<String> Traiter(List<String> texte) {
-        // Créer une nouvelle liste pour stocker les mots normalisés
-        List<String> motsNormalises = new ArrayList<>();
-
-        // Parcourir la liste de mots
-        for (String mot : texte) {
-            // Ajouter le mot en minuscules à la liste des mots normalisés
-            motsNormalises.add(mot.toLowerCase());
+        List<String> motsNormalises = new ArrayList<>(); // Créer une nouvelle liste pour stocker les mots normalisés
+        for (String mot : texte) { // Parcourir la liste de mots
+            motsNormalises.add(mot.toLowerCase()); // Ajouter le mot en minuscules à la liste des mots normalisés
         }
 
         return motsNormalises;
