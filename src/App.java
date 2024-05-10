@@ -9,7 +9,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         // Chemin du fichier ZIP à traiter
         String cheminFichierZip = "C:\\Users\\user\\Desktop\\tres_petit_corpus.zip";
-        
+
         // Création de l'index
         Index index = new Index();
 
@@ -30,9 +30,12 @@ public class App {
                         TraiteurMotVide traiteur2 = new TraiteurMotVide();
                         List<String> sansMotsVides = traiteur2.Traiter(motsTraites);
 
+                        TraiteurNormalisation traiteur3 = new TraiteurNormalisation();
+                        List<String> sansMotsVidesNormalises = traiteur3.Traiter(sansMotsVides);
+
                         // Analyse des mots et récupération des statistiques
                         Analyseur analyseur = new Analyseur();
-                        List<MotEtOcc> statistiques = analyseur.analyser(sansMotsVides);
+                        List<MotEtOcc> statistiques = analyseur.analyser(sansMotsVidesNormalises);
 
                         // Ajout des statistiques à l'index
                         for (MotEtOcc motOcc : statistiques) {
@@ -49,7 +52,8 @@ public class App {
         String motRecherche = "spell"; // Remplacez "exemple" par le mot que vous souhaitez rechercher
         List<Stat> statsMotRecherche = index.getStats(motRecherche);
         for (Stat stat : statsMotRecherche) {
-            System.out.println("Mot: " + stat.getMot() + ", Fichier: " + stat.getChemin() + ", Occurrences: " + stat.getOccurences());
+            System.out.println("Mot: " + stat.getMot() + ", Fichier: " + stat.getChemin() + ", Occurrences: "
+                    + stat.getOccurences());
         }
     }
 }
