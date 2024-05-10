@@ -1,40 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Index {
-    private Map<string,stat> 
-    
+    private Map<String, Stat> index = new HashMap<>();
 
-    // Méthode pour ajouter une Stat à la liste
-     public void ajouterStat(String mot, String chemin, int occurrences) {
-     Stat stat = trouverStat(mot, chemin);
-     if (stat != null) {
-     stat.incrementerOccurences();
-     } else {
-     stats.add(new Stat(mot, chemin, occurrences));
-     }
-     }
-
-    // Méthode pour trouver une Stat dans la liste
-    private Stat trouverStat(String mot, String chemin) {
-        for (Stat stat : stats) {
-            if (stat.getMot().equals(mot) && stat.getChemin().equals(chemin)) {
-                return stat;
-            }
+    // Méthode pour ajouter une Stat à l'index
+    public void ajouterStat(String mot, String chemin, int occurrences) {
+        // Vérifier si le mot existe déjà dans l'index
+        if (index.containsKey(mot)) {
+            // Récupérer la Stat associée au mot
+            Stat stat = index.get(mot);
+            // Incrémenter les occurrences de la Stat
+            stat.incrementerOccurences();
+        } else {
+            // Si le mot n'existe pas encore dans l'index, créer une nouvelle Stat
+            Stat newStat = new Stat(mot, chemin, occurrences);
+            // Ajouter la nouvelle Stat à l'index
+            index.put(mot, newStat);
         }
-        return null;
     }
 
-    // Optionnellement, vous pouvez ajouter une méthode pour obtenir la liste des
-    // stats
-    public List<Stat> getStats(String mot) {
-        List<Stat> resultats = new ArrayList<>();
-        for (Stat stat : stats) {
-            if (stat.getMot().equals(mot)) {
-                resultats.add(stat);
-            }
-        }
-        return resultats;
+    // Méthode pour obtenir la Stat associée à un mot
+    public Stat getStat(String mot) {
+        return index.get(mot);
     }
 }
